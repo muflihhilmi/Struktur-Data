@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Social Network Analysis (SNA) Graph</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        h1, h3 {
+            margin: 20px 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .flex-item {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .flex-item:last-child {
+            margin-right: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+        img {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Social Network Analysis (SNA) Graph</h1>
+    </header>
+    <div class="container">
+        <div>
+            <h3>Input Keywords:</h3>
+            <form method="GET" action="/graph">
+                <label for="keywords">Masukan Keywords (Pisah Dengan ,):</label>
+                <input type="text" name="keywords" id="keywords">
+                <label for="max_keywords">Maks Keyword:</label>
+                <input type="number" name="max_keywords" id="max_keywords" value="3" min="1">
+                <button type="submit">Update Graph</button>
+            </form>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item">
+                <h3>Keyword Legend:</h3>
+                <ul>
+                    <!-- Template loop for keyword colors -->
+                    {% for kw, color in keyword_colors.items() %}
+                    <li><span style="color: {{ color | safe }}">{{ kw }}</span></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="flex-item">
+                <h3>Persentase Kemunculan Keyword (Diagram Bulat)</h3>
+                <img src="{{ url_for('static', filename='pie_chart.png') }}" alt="Diagram Bulat" width="400" height="400">
+            </div>
+            <div class="flex-item">
+                <h3>Jumlah Kemunculan Keyword (Diagram Batang)</h3>
+                <img src="{{ url_for('static', filename='bar_chart.png') }}" alt="Diagram Batang" width="600" height="300">
+            </div>
+        </div>
+        <div>
+            <h3>SNA Graph</h3>
+            <img src="{{ url_for('static', filename='graph.png') }}" alt="SNA Graph">
+        </div>
+    </div>
+</body>
+</html>

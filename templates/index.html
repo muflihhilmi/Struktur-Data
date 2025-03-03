@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analisis Komentar YouTube - Graf SNA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        h1, h2 {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Analisis Komentar YouTube - Graf SNA</h1>
+    </header>
+    <div class="container">
+        <h2>Input Video ID dan Nama File CSV</h2>
+        <form method="POST" action="/graph">
+            <label for="videoid">Masukkan YouTube Video ID:</label>
+            <input type="text" name="videoid" id="videoid" required>
+            <label for="file_name">Masukkan Nama File CSV untuk menyimpan komentar:</label>
+            <input type="text" name="file_name" id="file_name" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
