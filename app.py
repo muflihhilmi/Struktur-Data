@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-ytapikey = 'AIzaSyAmNNGOxx4DvCGJj_V8qHP5N4PD9J5Btns'
+ytapikey = 'Your API Google KEY'
 bnyknyakomen = 1000
 
 def get_comments(yt, videoid, page_token=None):
